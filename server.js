@@ -1,34 +1,34 @@
-// Required NPM Packages
-var express = require('express');
-var bodyParser = require('body-parser');
+// Require our dependecies
+var express = require("express");
+var mongoose = require("mongoose");
+var bluebird = require("bluebird");
+var bodyParser = require("body-parser");
+var routes = require("./routes/routes");
 
+// Set up a default port, configure mongoose, configure our middleware
+var PORT = process.env.PORT || 3000;
+mongoose.Promise = bluebird;
 var app = express();
-
-// Public Settings
-app.use(express.static(__dirname + '/app'));
-var port = process.env.PORT || 3000;
-
-// Database
-require("./config/connection");
-
-// BodyParser Settings
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-	extended: false
-}));
+app.use(express.static(__dirname + "/public"));
+app.use("/", routes);
 
-// Set up Handlebar for views
-var expressHandlebars = require('express-handlebars');
-app.engine('handlebars', expressHandlebars({
-    defaultLayout: 'main'
-}));
-app.set('view engine', 'handlebars');
+var db = process.env.MONGODB_URI || "mongodb://localhost/quotesApp";
 
-//Routes
-var routes = require('./controllers/bid.js');
-app.use('/',routes);
+// Connect mongoose to our database
+mongoose.connect(db, function(error) {
+  // Log any errors connecting with mongoose
+  if (error) {
+    console.error(error);
+  }
+  // Or log a success message
+  else {
+    console.log("mongoose connection is successful");
+  }
+});
 
-//Port
-app.listen(port, function() {
-    console.log("Listening on port:" + port);
+// Start the server
+app.listen(PORT, function() {
+  console.log("Now listening on port %s! Visit localhost:%s in your browser.", PORT, PORT);
 });
