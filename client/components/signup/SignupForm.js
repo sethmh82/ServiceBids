@@ -120,7 +120,7 @@ class SignupForm extends React.Component {
           type="password"
         />
 
-        <div className={classnames("form-group", { 'has-error': errors.timezone })}>
+        {/* <div className={classnames("form-group", { 'has-error': errors.timezone })}>
           <label className="control-label">Timezone</label>
           <select
             className="form-control"
@@ -132,7 +132,7 @@ class SignupForm extends React.Component {
             {options}
           </select>
           {errors.timezone && <span className="help-block">{errors.timezone}</span>}
-        </div>
+        </div> */}
 
         <div className="form-group">
           <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-primary btn-lg">
