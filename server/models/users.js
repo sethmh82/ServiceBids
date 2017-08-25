@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var users = sequelize.define("users", {
+  var Users = sequelize.define("users", {
     userID: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -49,12 +49,12 @@ module.exports = function(sequelize, DataTypes) {
     },
   }); 
 // Class Method
-users.associate = function (models) {
+// Users.associate = function (models) {
 
-   users.hasMany(models.Projects, {
-    onDelete: "cascade"
-});
+//    Users.hasMany(models.Projects, {
+//     onDelete: "cascade"
+// });
     
-};
+// };
   return Users
 }
