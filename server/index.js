@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import Sequelize from 'sequelize';
 import bodyParser from 'body-parser';
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'test';
 var config = require(path.join(__dirname, 'config', 'config.json'))[env];
 var sequelize = new Sequelize(config.database, config.username, config.password, config);
 import db from './models';
@@ -16,6 +16,9 @@ import users from './routes/users';
 import auth from './routes/auth';
 import events from './routes/events';
 
+//ADDED PROFILE
+import profile from './routes/profile';
+
 let app = express();
 
 db.sequelize.sync().then(function() {
@@ -27,6 +30,9 @@ app.use(bodyParser.json());
 app.use('/api/users', users);
 app.use('/api/auth', auth);
 app.use('/api/events', events);
+
+//ADDED PROFILE
+app.use('/api/:id', profile);
 
 const compiler = webpack(webpackConfig);
 
