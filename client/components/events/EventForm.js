@@ -30,7 +30,7 @@ class EventForm extends React.Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <h1>Create New Game Event</h1>
+        <h1>Create New Project</h1>
 
         <TextFieldGroup
           field="title"

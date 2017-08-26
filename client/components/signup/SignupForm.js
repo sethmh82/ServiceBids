@@ -13,7 +13,6 @@ class SignupForm extends React.Component {
       email: '',
       password: '',
       passwordConfirmation: '',
-      timezone: '',
       errors: {},
       isLoading: false,
       invalid: false
@@ -77,9 +76,7 @@ class SignupForm extends React.Component {
 
   render() {
     const { errors } = this.state;
-    const options = map(timezones, (val, key) =>
-      <option key={val} value={val}>{key}</option>
-    );
+
     return (
       <form onSubmit={this.onSubmit}>
         <h1>Join our community!</h1>
@@ -120,19 +117,7 @@ class SignupForm extends React.Component {
           type="password"
         />
 
-        {/* <div className={classnames("form-group", { 'has-error': errors.timezone })}>
-          <label className="control-label">Timezone</label>
-          <select
-            className="form-control"
-            name="timezone"
-            onChange={this.onChange}
-            value={this.state.timezone}
-          >
-            <option value="" disabled>Choose Your Timezone</option>
-            {options}
-          </select>
-          {errors.timezone && <span className="help-block">{errors.timezone}</span>}
-        </div> */}
+
 
         <div className="form-group">
           <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-primary btn-lg">
