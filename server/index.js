@@ -19,7 +19,7 @@ import users from './routes/users';
 import auth from './routes/auth';
 import events from './routes/events';
 
-//ADDED PROFILE
+
 import profile from './routes/profile';
 
 let app = express();
@@ -34,7 +34,7 @@ app.use('/api/users', users);
 app.use('/api/auth', auth);
 app.use('/api/events', events);
 
-//ADDED PROFILE
+
 app.use('/api/:id', profile);
 
 const compiler = webpack(webpackConfig);
@@ -53,6 +53,3 @@ app.get('/*', (req, res) => {
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
 });
-
-
-//app.listen(3000, () => console.log('Running on localhost:3000'));
