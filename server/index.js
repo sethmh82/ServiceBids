@@ -2,6 +2,9 @@ import express from 'express';
 import path from 'path';
 import Sequelize from 'sequelize';
 import bodyParser from 'body-parser';
+
+var PORT = process.env.PORT || 3000;
+
 var env = process.env.NODE_ENV || 'production';
 var config = require(path.join(__dirname, 'config', 'config.json'))[env];
 var sequelize = new Sequelize(config.database, config.username, config.password, config);
@@ -47,4 +50,6 @@ app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, './index.html'));
 });
 
-app.listen(3000, () => console.log('Running on localhost:3000'));
+app.listen(PORT, function() {
+  console.log("App listening on PORT " + PORT);
+});
