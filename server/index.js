@@ -53,6 +53,3 @@ app.get('/*', (req, res) => {
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
 });
-
-
-//app.listen(3000, () => console.log('Running on localhost:3000'));
