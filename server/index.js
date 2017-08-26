@@ -1,5 +1,5 @@
 const express = require('express');
-import path from 'path';
+const path from 'path';
 import Sequelize from 'sequelize';
 import bodyParser from 'body-parser';
 
