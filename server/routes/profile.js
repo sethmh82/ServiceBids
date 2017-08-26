@@ -9,7 +9,7 @@ import db from '../models';
 let router = express.Router(); 
 
 //AUTHENTICATE USER
-router.post('/', authenticate, (req, res) => {
+router.post('/*', authenticate, (req, res) => {
   res.status(201).json({ success: true });
   res.render("heyyy");
 });

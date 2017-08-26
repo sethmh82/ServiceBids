@@ -3,12 +3,12 @@
 var fs        = require('fs');
 var path      = require('path');
 var Sequelize = require('sequelize');
+var env       = process.env.NODE_ENV || 'test';
 var basename  = path.basename(module.filename);
-var PORT = process.env.PORT || 3000;
-var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/config.json')[env];
 console.log(config);
 var db        = {};
+
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
@@ -34,5 +34,6 @@ Object.keys(db).forEach(function(modelName) {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
 
 module.exports = db;

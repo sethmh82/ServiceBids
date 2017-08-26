@@ -3,10 +3,10 @@ import path from 'path';
 import Sequelize from 'sequelize';
 import bodyParser from 'body-parser';
 
-
-
-var env = process.env.NODE_ENV || 'production';
 var PORT = process.env.PORT || 3000;
+var env       = process.env.NODE_ENV || 'test';
+
+
 var config = require(path.join(__dirname, 'config', 'config.json'))[env];
 var sequelize = new Sequelize(config.database, config.username, config.password, config);
 import db from './models';
@@ -48,6 +48,7 @@ app.use(webpackHotMiddleware(compiler));
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, './index.html'));
 });
+
 
 
 
