@@ -27,6 +27,9 @@ class EditProfileForm extends React.Component {
     this.props.UpdateProfile(this.state);
   }
 
+
+  
+
   render() {
     const { about, photo, location, errors, isLoading } = this.state;
 
