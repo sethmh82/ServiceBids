@@ -10,8 +10,6 @@ class EditProfileForm extends React.Component {
       about: '',
       photo: '',
       location: '',
-      errors: {},
-      isLoading: false
     };
 
     this.onChange = this.onChange.bind(this);
@@ -24,14 +22,16 @@ class EditProfileForm extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    this.props.UpdateProfile(this.state);
+    this.props.UpdateProfile(this.state).then(
+    this.context.router.push('/')
+    );
   }
 
 
   
 
   render() {
-    const { about, photo, location, errors, isLoading } = this.state;
+    const { about, photo, location } = this.state;
 
     return (
       <form onSubmit={this.onSubmit}>
@@ -43,7 +43,7 @@ class EditProfileForm extends React.Component {
           name="about"
           value={about}
           onChange={this.onChange}
-          error={errors.about}
+   
         />
 
          <TextFieldGroup
@@ -52,7 +52,7 @@ class EditProfileForm extends React.Component {
           name="photo"
           value={photo}
           onChange={this.onChange}
-          error={errors.photo}
+       
         />
 
 
@@ -62,7 +62,7 @@ class EditProfileForm extends React.Component {
           name="location"
           value={location}
           onChange={this.onChange}
-          error={errors.location}
+    
         />
 
         <button type="submit" className="btn btn-primary">Update Profile</button>
@@ -72,8 +72,6 @@ class EditProfileForm extends React.Component {
 }
 
 
-EditProfileForm.propTypes = {
-  updateProfile: React.PropTypes.func.isRequired
-}
+
 
 export default connect(null, { updateProfile })(EditProfileForm);

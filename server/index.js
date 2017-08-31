@@ -34,7 +34,7 @@ app.use('/api/auth', auth);
 app.use('/api/events', events);
 
 
-app.use('/api/:id', profile);
+app.use('/api/profile', profile);
 
 const compiler = webpack(webpackConfig);
 
