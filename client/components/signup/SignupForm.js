@@ -144,14 +144,7 @@ class SignupForm extends React.Component {
           type="password"
         />
 
-        {/* <TextFieldGroup
-          error={errors.location}
-          label="My Location"
-          onChange={this.onChange}
-          value={this.state.location}
-          field="location"
-          type="location"
-        /> */}
+
         <div>
         <label className="control-label">Location</label>
         <PlacesAutocomplete 
