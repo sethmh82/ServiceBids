@@ -9,20 +9,25 @@ import db from '../models';
 
 let router = express.Router();
 
-//AUTHENTICATE USER
+//GET USER PROFILE
 
-router.get('/', (req, res) => {
-  db.users.findOne({
-    where: {
-      id: {
-        $eq: req.params.id
+router.get('/:id', (req, res) => {
+  vProfile = db.users.findAll({
+
+      where: {
+        id: {
+          $eq: req.params.id
+        }
       }
-    },
-    logging: console.log
-  }).then(user => {
-    res.json({ user });
-  });
 
+
+    }).then(user => {
+      res.send(
+        
+        { users }
+     
+      );
+    });
 });
 
 

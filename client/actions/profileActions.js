@@ -8,3 +8,9 @@ export function updateProfile(profile, id) {
     return axios.post(`/api/profile/${id}`, profile);
   };
 }
+
+export function viewProfile(vProfile, id) {
+  return dispatch => {
+    return axios.get(`/api/profile/${id}`, vProfile);
+  }
+}

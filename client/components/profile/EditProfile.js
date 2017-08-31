@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateProfile } from '../../actions/profileActions';
+import { viewProfile } from '../../actions/profileActions';
 import TextFieldGroup from '../common/TextFieldGroup';
 import jwtDecode from 'jwt-decode';
 
@@ -26,14 +27,12 @@ class EditProfileForm extends React.Component {
     var decoded = jwtDecode(localStorage['jwtToken']);
     console.log(decoded);
 
-
     this.props.updateProfile(this.state, decoded.id).then(() => {
       console.log(this.context);
       this.context.router.push('/')
     }
     );
   }
-
 
 
 
@@ -50,7 +49,6 @@ class EditProfileForm extends React.Component {
           name="about"
           value={about}
           onChange={this.onChange}
-
         />
 
         <TextFieldGroup
@@ -59,9 +57,7 @@ class EditProfileForm extends React.Component {
           name="photo"
           value={photo}
           onChange={this.onChange}
-
         />
-
 
         <TextFieldGroup
           field="location"
@@ -69,7 +65,6 @@ class EditProfileForm extends React.Component {
           name="location"
           value={location}
           onChange={this.onChange}
-
         />
 
         <button type="submit" className="btn btn-primary">Update Profile</button>
