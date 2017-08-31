@@ -7,61 +7,46 @@ import jwt from 'jsonwebtoken';
 import config from '../config';
 import db from '../models';
 
-let router = express.Router(); 
+let router = express.Router();
 
 //AUTHENTICATE USER
 
-
-
 router.get('/', (req, res) => {
-    db.users.findOne({
-        where: {
-                id: {
-                  $eq: req.params.id
-                }
-              },   
-    logging: console.log }).then(user => {
-      res.json({ user });
-      });
+  db.users.findOne({
+    where: {
+      id: {
+        $eq: req.params.id
+      }
+    },
+    logging: console.log
+  }).then(user => {
+    res.json({ user });
+  });
 
 });
 
 
-router.post('/', (req, res) => {
+router.post('/:id', (req, res) => {
 
-      const { about, photo, location, identifier } = req.body;
-      
+  const { about, photo, location } = req.body;
 
-           db.users.update({
-             where: {
-               id: {
-                 $eq: identifier
-               },
-                  about: about,
-                  photo: photo,
-                  location: location
-             }
-}).then(() => {})
-
-});
+  db.users.update({
+    about: about,
+    photo: photo,
+    location: location
+  },
+    {
+      where: {
+        id: {
+          $eq: req.params.id
+        }
+      }
 
 
-router.post('/', (req, res) => {
+    }).then(user => {
+      res.end();
+    });
 
-      const { about, photo, location, identifier } = req.body;
-           db.users.update({
-             where: {
-               id: {
-                 $eq: identifier
-               },
-                  about: about,
-                  photo: photo,
-                  location: location
-             }
-}).then(user => {
-      res.json({ user });
-      });
-            
 });
 
 export default router;
