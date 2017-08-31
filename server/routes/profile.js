@@ -27,6 +27,7 @@ router.get('/', (req, res) => {
 
 
 router.post('/:id', (req, res) => {
+  console.log(req.params.id);
 
   const { about, photo, location } = req.body;
 

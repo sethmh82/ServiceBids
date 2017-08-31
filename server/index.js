@@ -4,7 +4,7 @@ import Sequelize from 'sequelize';
 import bodyParser from 'body-parser';
 
 var PORT = process.env.PORT || 3000;
-var env  = process.env.NODE_ENV || 'development';
+var env  = process.env.NODE_ENV || 'test';
 
 
 var config = require(path.join(__dirname, 'config', 'config.json'))[env];
