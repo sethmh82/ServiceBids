@@ -1,6 +1,9 @@
 {
   "development": {
-    "use_environment_varible": "JAWSDB_URL",
+    "username": "root",
+    "password": "root",
+    "database": "servicebid",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {

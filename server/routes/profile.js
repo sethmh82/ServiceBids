@@ -3,19 +3,17 @@ import commonValidations from '../shared/validations/signup';
 import bcrypt from 'bcrypt';
 import isEmpty from 'lodash/isEmpty';
 import authenticate from '../middlewares/authenticate';
-
+import jwt from 'jsonwebtoken';
+import config from '../config';
 import db from '../models';
 
 let router = express.Router(); 
 
 //AUTHENTICATE USER
-router.post('/*', authenticate, (req, res) => {
-  res.status(201).json({ success: true });
-  res.render("heyyy");
-});
 
 
-router.get('/:id', (req, res) => {
+
+router.get('/', (req, res) => {
     db.users.findOne({
         where: {
                 id: {
@@ -28,5 +26,42 @@ router.get('/:id', (req, res) => {
 
 });
 
-export default router;
 
+router.post('/', (req, res) => {
+
+      const { about, photo, location, identifier } = req.body;
+      
+
+           db.users.update({
+             where: {
+               id: {
+                 $eq: identifier
+               },
+                  about: about,
+                  photo: photo,
+                  location: location
+             }
+}).then(() => {})
+
+});
+
+
+router.post('/', (req, res) => {
+
+      const { about, photo, location, identifier } = req.body;
+           db.users.update({
+             where: {
+               id: {
+                 $eq: identifier
+               },
+                  about: about,
+                  photo: photo,
+                  location: location
+             }
+}).then(user => {
+      res.json({ user });
+      });
+            
+});
+
+export default router;
