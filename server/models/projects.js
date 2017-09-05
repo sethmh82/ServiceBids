@@ -1,15 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var projects = sequelize.define("projects", {
-    // projectID: {
-    //     type: DataTypes.INTEGER,
-    //     allowNull: true,
-    //     primaryKey: true,
-    //     autoIncrement: true
-    //     },
-    // authorID: {
-    //     type: DataTypes.INTEGER,
-    //     allowNull: false
-    // },
+
     projectName: {
         type: DataTypes.STRING,
         allowNull: true
@@ -45,16 +36,16 @@ module.exports = function(sequelize, DataTypes) {
     paymentReceived: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        default: false
+        defaultValue: false
     },
     completed: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        default: false
+        defaultValue: false
     },
     completedBy: {
         type: DataTypes.STRING,
-        default: ""
+        defaultValue: ""
     },        
     rating: {
         type: DataTypes.INTEGER,

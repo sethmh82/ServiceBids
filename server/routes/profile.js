@@ -1,10 +1,4 @@
 import express from 'express';
-import commonValidations from '../shared/validations/signup';
-import bcrypt from 'bcrypt';
-import isEmpty from 'lodash/isEmpty';
-import authenticate from '../middlewares/authenticate';
-import jwt from 'jsonwebtoken';
-import config from '../config';
 import db from '../models';
 
 let router = express.Router();
