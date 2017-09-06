@@ -3,11 +3,11 @@ module.exports = function(sequelize, DataTypes) {
 
     projectName: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },        
     category: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },        
     description: {
         type: DataTypes.STRING,
