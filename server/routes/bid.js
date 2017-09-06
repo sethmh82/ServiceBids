@@ -13,7 +13,8 @@ router.post('/:id', (req, res) => {
         }
     }).then(projects => {
       res.json({ projects });
-      });
+      console.log(projects);
+      }).catch(err => res.status(500).json({ error: err }));
 
 
 });
