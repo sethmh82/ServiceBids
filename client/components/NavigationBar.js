@@ -15,10 +15,16 @@ class NavigationBar extends React.Component {
     const userLinks = (
       
         <ul className="nav navbar-nav navbar-right">
-        <li><Link to="/bid">Go Bid</Link></li>
-        <li><Link to="/new-event">Create Project</Link></li>
-        <li><Link to="/profile">My Profile</Link></li>
-        <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
+              <li><Link to="/bid">Go Bid</Link></li>
+              <li><Link to="/new-event">Create Project</Link></li>
+              <li className="dropdown">
+                <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Profile<span className="caret"></span></a>
+                <ul className="dropdown-menu">
+                  <li><a href="#">View Profile</a></li>
+                  <li><Link to="/profile">Edit Profile</Link></li>
+                </ul>
+              </li>
+              <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
         </ul>
 
     );
