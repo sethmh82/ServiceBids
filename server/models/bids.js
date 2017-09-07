@@ -9,6 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     bids.associate = function (models) {
 
     bids.belongsTo(models.projects, {
+       as: 'projectKey',
        foreignKey: {
          allowNull: false
        }
@@ -16,6 +17,7 @@ module.exports = function(sequelize, DataTypes) {
     
 
     bids.belongsTo(models.users, {
+       as: 'usersKey',
        foreignKey: {
          allowNull: false
        }
