@@ -37,6 +37,15 @@ class ViewProfileForm extends React.Component {
                 <h2>LOCATION</h2>
                 {vProfile.location}
                 <hr />
+                <h2>LIST OF SERVICES</h2>
+                {vProfile.servicesList}
+                <hr />
+                <h2>MY RATING</h2>
+                {vProfile.myRating}
+                <hr />
+                <h2>MY REVIEWS</h2>
+                {vProfile.myReviews}
+                <hr />
             </div>
 
         );
