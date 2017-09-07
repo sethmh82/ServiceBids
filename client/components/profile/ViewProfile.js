@@ -28,9 +28,13 @@ class ViewProfileForm extends React.Component {
 
         return (
             <div>
-                <h1>My Profile</h1>
+                <h1>{vProfile.username}</h1>
+                <img width="300px" src={vProfile.photo}/>
+                <hr />
+                <h2>ABOUT</h2>
                 {vProfile.about}
-                {vProfile.photo}
+                <hr />
+                <h2>LOCATION</h2>
                 {vProfile.location}
                 <hr />
             </div>
