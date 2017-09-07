@@ -1,10 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-  var Projects = sequelize.define("projects", {
+  var projects = sequelize.define("projects", {
 
-    authorID: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
     projectName: {
         type: DataTypes.STRING,
         allowNull: false
@@ -57,7 +53,7 @@ module.exports = function(sequelize, DataTypes) {
     }
     }); 
 
-    Projects.associate = function (models) {
+    projects.associate = function (models) {
 
         projects.belongsTo(models.users, {
             foreignKey: {
@@ -66,5 +62,5 @@ module.exports = function(sequelize, DataTypes) {
         });
     
     };
-    return Projects
+    return projects
 };
