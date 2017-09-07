@@ -55,13 +55,12 @@ module.exports = function(sequelize, DataTypes) {
 
     projects.associate = function (models) {
 
-    projects.belongsTo(models.users, {
-       foreignKey: {
-         allowNull: false
-       }
-    });
-    
-};
-  return projects
+        projects.belongsTo(models.users, {
+        foreignKey: {
+            allowNull: false
+        }
+        });
+    };
+    return projects
 };
 
