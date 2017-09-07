@@ -1,6 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var users = sequelize.define("users", {
-
+  var Users = sequelize.define("users", {
     username: {
         type: DataTypes.STRING(15),
         allowNull: false,
@@ -20,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     photo: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },
     location: {
         type: DataTypes.STRING,
@@ -32,18 +31,19 @@ module.exports = function(sequelize, DataTypes) {
     },
     about: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },
     myRating: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: false
     },
     myReviews: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },
   }); 
-// Class Method
+
+  // Class Method
     users.associate = function (models) {
 
         users.hasMany(models.projects, {
@@ -51,5 +51,5 @@ module.exports = function(sequelize, DataTypes) {
         });
         
     };
-  return users
+  return Users
 }
