@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Users = sequelize.define("users", {
+  var users = sequelize.define("users", {
     username: {
         type: DataTypes.STRING(15),
         allowNull: false,
@@ -19,27 +19,27 @@ module.exports = function(sequelize, DataTypes) {
     },
     photo: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     location: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     servicesList: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     about: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     myRating: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
     },
     myReviews: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
   }); 
 
@@ -51,5 +51,5 @@ module.exports = function(sequelize, DataTypes) {
         });
         
     };
-  return Users
+  return users
 }
