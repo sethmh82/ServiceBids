@@ -6,21 +6,11 @@ let router = express.Router();
 //GET USER PROFILE
 
 router.get('/:id', (req, res) => {
-  vProfile = db.users.findAll({
 
-      where: {
-        id: {
-          $eq: req.params.id
-        }
-      }
-
-
-    }).then(user => {
-      res.send(
-        
-        { users }
+  db.users.findById(req.params.id).then(user => {
+    console.log("sjhjfkhsf",user);
+      res.json(user.dataValues);
      
-      );
     });
 });
 
