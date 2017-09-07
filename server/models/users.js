@@ -44,12 +44,12 @@ module.exports = function(sequelize, DataTypes) {
     },
   }); 
 // Class Method
-users.associate = function (models) {
+    users.associate = function (models) {
 
-   users.hasMany(models.projects, {
-    onDelete: "cascade"
-});
-    
-};
+        users.hasMany(models.projects, {
+            onDelete: "cascade"
+        });
+        
+    };
   return users
 }
