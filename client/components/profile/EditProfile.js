@@ -11,7 +11,7 @@ class EditProfileForm extends React.Component {
     this.state = {
       about: '',
       photo: '',
-      location: '',
+      location: ''
     };
 
     this.onChange = this.onChange.bind(this);
