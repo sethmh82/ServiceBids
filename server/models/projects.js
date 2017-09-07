@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Projects = sequelize.define("projects", {
+  var projects = sequelize.define("projects", {
 
     authorID: {
         type: DataTypes.INTEGER,
@@ -57,7 +57,7 @@ module.exports = function(sequelize, DataTypes) {
     }
     }); 
 
-    Projects.associate = function (models) {
+    projects.associate = function (models) {
 
         projects.belongsTo(models.users, {
             foreignKey: {
@@ -66,5 +66,5 @@ module.exports = function(sequelize, DataTypes) {
         });
     
     };
-    return Projects
+    return projects
 };

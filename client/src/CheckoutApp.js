@@ -19,4 +19,3 @@ class CheckoutApp extends Component {
 
 export default CheckoutApp;
 
-<CheckoutApp />
