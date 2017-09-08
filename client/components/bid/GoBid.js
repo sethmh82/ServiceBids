@@ -86,7 +86,7 @@ class GoBid extends React.Component {
         {
           map(this.state.results, (project, i) =>
 
-            <div key={i} className="alert alert-info" role="alert"><h3 className='articleHeadline'><span className="label label-danger">{++i}</span><strong> {project.projectName}</strong><span className="badge"><button type="submit" className="btn-right btn-danger navbar-btn" formMethod="post">Save!</button></span></h3></div>
+            <div key={i} className="alert alert-info" role="alert"><h3 className='articleHeadline'><span className="label label-danger">{++i}</span><strong> {project.projectName}</strong><span className="badge"><button type="submit" className="btn-right btn-danger navbar-btn" formMethod="post">View Project</button></span></h3></div>
 
           )
         }
