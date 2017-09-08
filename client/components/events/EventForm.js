@@ -13,6 +13,7 @@ class EventForm extends React.Component {
     this.state = {
       title: '',
       category:'',
+      Description : '',
       errors: {},
       isLoading: false
     };
@@ -64,7 +65,13 @@ class EventForm extends React.Component {
               {options}
             </select>
             
-          </div>
+        </div>
+
+        <div className={classnames("form-group")}>
+          <label htmlFor="exampleTextarea">Project Description</label>
+          <textarea className="form-control" id="exampleTextarea" rows="3" name="Description" onChange={this.onChange} value={this.state.Description}></textarea>
+        </div>
+
 
         <button type="submit" className="btn btn-primary">Create</button>
       </form>
