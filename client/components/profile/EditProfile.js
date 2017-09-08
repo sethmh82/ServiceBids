@@ -4,11 +4,13 @@ import { updateProfile } from '../../actions/profileActions';
 import { viewProfile } from '../../actions/profileActions';
 import TextFieldGroup from '../common/TextFieldGroup';
 import jwtDecode from 'jwt-decode';
+import Input from 'react-placeholder-support';
 
 class EditProfileForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      vProfile: {},
       about: '',
       photo: '',
       location: ''
@@ -16,6 +18,7 @@ class EditProfileForm extends React.Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+
   }
 
   onChange(e) {
@@ -28,17 +31,38 @@ class EditProfileForm extends React.Component {
     console.log(decoded);
 
     this.props.updateProfile(this.state, decoded.id).then(() => {
-      console.log(this.context);
-      this.context.router.push('/')
+
+          this.props.addFlashMessage({
+            type: 'success',
+            text: 'Your profile was updated successfully'
+          });
+          this.context.router.push('/profile');
+        }
+      );
     }
-    );
+
+
+      componentWillMount() {
+      
+        var decoded = jwtDecode(localStorage['jwtToken']);
+        viewProfile(this.state, decoded.id)
+            .then(res => {
+            console.log(res.data);
+            this.setState({ vProfile: res.data })
+      });
   }
 
+  componentDidUpdate() {
+    if (this.didSwitchParentObject) {
+      this.didSwitchParentObject = false;
+      this.refs.myTextInput.value = this.state.myTextInputInitialValue;
+    }
+  }
 
 
   render() {
     const { about, photo, location } = this.state;
-
+    const { vProfile } = this.state;
     return (
       <form onSubmit={this.onSubmit}>
         <h1>Update Your Profile</h1>
@@ -48,6 +72,8 @@ class EditProfileForm extends React.Component {
           label="About Me"
           name="about"
           value={about}
+          defaultValue={vProfile.about}
+
           onChange={this.onChange}
         />
 
@@ -56,7 +82,9 @@ class EditProfileForm extends React.Component {
           label="Photo URL"
           name="photo"
           value={photo}
-          onChange={this.onChange}
+          defaultValue={vProfile.photo}
+
+
         />
 
         <TextFieldGroup
@@ -64,6 +92,7 @@ class EditProfileForm extends React.Component {
           label="My Location"
           name="location"
           value={location}
+          placeholder={vProfile.location}
           onChange={this.onChange}
         />
 
