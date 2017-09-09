@@ -17,7 +17,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config.dev';
 
 import open from 'open';
-import socket from 'socket.io';
+//import socket from 'socket.io';
 import {Server} from 'http';
 
 import users from './routes/users';
@@ -64,7 +64,7 @@ app.route('/*')
   .get(function(req, res) {
     res.sendfile(app.get('appPath') + '/index.html');
   });
-*/
+
 
 
 io.on('connection', function(socket) {  
@@ -76,7 +76,7 @@ io.on('connection', function(socket) {
     io.emit('chat message', message);
   });
 });
-
+*/
 
 db.sequelize.sync().then(function() {
   server.listen(PORT, function() {
