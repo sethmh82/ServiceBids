@@ -17,7 +17,6 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config.dev';
 
 import open from 'open';
-//import socket from 'socket.io';
 import {Server} from 'http';
 
 import users from './routes/users';
@@ -31,7 +30,7 @@ import profile from './routes/profile';
 let app = express();
 let server = Server(app);
 let compiler = webpack(webpackConfig);
-let io = socket(server);
+
 
 
 
@@ -56,27 +55,7 @@ app.use(webpackHotMiddleware(compiler));
 app.use('/*', (req, res) => {
   res.sendFile(path.join(__dirname, './index.html'));
 });
-/*
-app.set('appPath', 'public');
-app.use(express.static(__dirname));
 
-app.route('/*')
-  .get(function(req, res) {
-    res.sendfile(app.get('appPath') + '/index.html');
-  });
-
-
-
-io.on('connection', function(socket) {  
-  console.log('user connected on: ' + socket.id);
-  socket.on('disconnect', function(){
-    console.log('user disconnected on: ' + socket.id);
-  });
-  socket.on('chat message', function(message){
-    io.emit('chat message', message);
-  });
-});
-*/
 
 db.sequelize.sync().then(function() {
   server.listen(PORT, function() {
