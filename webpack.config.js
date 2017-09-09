@@ -1,9 +1,9 @@
-import path from 'path'
-import webpack from 'webpack';
+const path = require("path") 
+const webpack = require('webpack');
 
 
 
-export default {
+module.exports =  {
   devtools: ['eval-source-map','source-map'],
   entry: [
     'webpack-hot-middleware/client',
@@ -13,6 +13,7 @@ export default {
     path: '/',
     publicPath: '/',
     libraryTarget: 'umd',
+    filename: "bundle.js",
     libraryName: 'PlacesAutocomplete'
   },
   plugins: [
@@ -40,9 +41,6 @@ export default {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        include: [
-          path.join(__dirname, 'node_modules/react-places-autocomplete/dist')
-        ],
         loaders: [
           'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
           'image-webpack-loader'

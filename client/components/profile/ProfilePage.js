@@ -5,37 +5,23 @@ import ViewProfileForm from './ViewProfile';
 import CheckoutApp from '../../src/CheckoutApp';
 import { connect } from 'react-redux';
 import { setCurrentUser } from '../../actions/authActions';
-import { addFlashMessage } from '../../actions/flashMessages.js';
 
 class ProfilePage extends React.Component {
   render() {
-        const { addFlashMessage } = this.props;
     return (
       <div className="row">
-         <div className="col-md-12">
+         <div className="col-md-6">
           <ViewProfileForm />
-          <div className="payment">
-            <h3>Pay This Person</h3>
-           <CheckoutApp />
-           </div>
         </div>
-        <div className="col-md-12">
-          <EditProfileForm 
-          addFlashMessage={addFlashMessage}
-          />
+        <div className="col-md-6">
+          <EditProfileForm />
          
-         
+          <CheckoutApp />
           </div>
          
       </div>
     );
   }
-}
-
-ProfilePage.propTypes = {
-
-  addFlashMessage: React.PropTypes.func.isRequired
-
 }
 
 export default ProfilePage;
