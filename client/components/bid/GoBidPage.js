@@ -23,7 +23,11 @@ class GoBidPage extends React.Component {
       data.description = this.state.Project.description;
       data.userId =this.state.Project.userId;
       console.log(data);
+      this.state.pDetailVisible = true;
       
+    }
+    if(prevState.bidVisible !== this.state.bidVisible){
+
     }
 
 
@@ -40,7 +44,12 @@ class GoBidPage extends React.Component {
     return (
       <div className="row">
         <div className="col-md-6 col-md-offset-3">
-        { this.state.bidVisible ? <GoBid bidVisible={this.state.bidVisible}  setProject={this.setProject} /> : null }
+        { this.state.bidVisible ? <GoBid bidVisible={this.state.bidVisible}  setProject={this.setProject} /> : 
+          <div>
+            <h1>Project Name: {this.state.Project.projectName}</h1>
+            <h2>Project Category: {this.state.Project.category}</h2>
+            <h3>Project Description: {this.state.Project.description}</h3>
+          </div> }
         </div>
       </div>
     );
