@@ -52,10 +52,19 @@ app.use(webpackMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler));
 
-
+/*
 app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, './index.html'));
 });
+*/
+app.set('appPath', 'public');
+app.use(express.static(__dirname));
+
+app.route('/*')
+  .get(function(req, res) {
+    res.sendfile(app.get('appPath') + '/index.html');
+  });
+
 
 
 io.on('connection', function(socket) {  
