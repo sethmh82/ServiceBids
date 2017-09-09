@@ -47,7 +47,7 @@ app.get('/*', (req, res) => {
 
 
 db.sequelize.sync().then(function() {
-  server.listen(PORT, function() {
+  app.listen(PORT, function() {
       console.log("App listening on PORT " + PORT);
   });
 });
