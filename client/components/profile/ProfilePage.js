@@ -14,7 +14,10 @@ class ProfilePage extends React.Component {
       <div className="row">
          <div className="col-md-12">
           <ViewProfileForm />
+          <div className="payment">
+            <h3>Pay This Person</h3>
            <CheckoutApp />
+           </div>
         </div>
         <div className="col-md-12">
           <EditProfileForm 
