@@ -6,7 +6,6 @@ import bodyParser from 'body-parser';
 var PORT = process.env.PORT || 3000;
 var env  = process.env.NODE_ENV || 'development';
 
-
 var config = require(path.join(__dirname, 'config', 'config.json'))[env];
 var sequelize = new Sequelize(config.database, config.username, config.password, config);
 import db from './models';
@@ -16,23 +15,13 @@ import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config.dev';
 
-import open from 'open';
-import {Server} from 'http';
-
 import users from './routes/users';
 import auth from './routes/auth';
 import events from './routes/events';
 import bid from './routes/bid';
-
-
 import profile from './routes/profile';
 
 let app = express();
-let server = Server(app);
-let compiler = webpack(webpackConfig);
-
-
-
 
 app.use(bodyParser.json());
 
@@ -42,19 +31,19 @@ app.use('/api/events', events);
 app.use('/api/bid', bid);
 app.use('/api/profile', profile);
 
+const compiler = webpack(webpackConfig);
 
 app.use(webpackMiddleware(compiler, {
   hot: true,
   publicPath: webpackConfig.output.publicPath,
   noInfo: true
 }));
-
 app.use(webpackHotMiddleware(compiler));
 
-
-app.use('/*', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, './index.html'));
 });
+
 
 
 db.sequelize.sync().then(function() {

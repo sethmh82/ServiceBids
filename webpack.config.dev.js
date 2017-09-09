@@ -20,7 +20,7 @@ export default {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ],
-   module: {
+  module: {
     loaders: [
       {
         test: /\.js$/,
@@ -29,6 +29,24 @@ export default {
           path.join(__dirname, 'server/shared')
         ],
         loaders: [ 'react-hot', 'babel' ]
+      },
+      {
+        test: /\.json$/,
+        include: [
+          path.join(__dirname, 'node_modules/react-places-autocomplete/dist')
+        ],
+        loader: 'json'
+       
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        include: [
+          path.join(__dirname, 'node_modules/react-places-autocomplete/dist')
+        ],
+        loaders: [
+          'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+          'image-webpack-loader'
+        ]
       }
     ]
   },
@@ -36,3 +54,5 @@ export default {
     extentions: [ '', '.js' ]
   }
 }
+
+
