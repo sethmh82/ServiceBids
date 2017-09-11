@@ -14,7 +14,7 @@ import db from './models';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import webpackConfig from '../webpack.config.dev';
+import webpackConfig from '../webpack.config';
 
 import open from 'open';
 import socket from 'socket.io';
@@ -44,19 +44,25 @@ app.use('/api/bid', bid);
 app.use('/api/profile', profile);
 
 
-app.use(webpackMiddleware(compiler, {
-  hot: true,
-  publicPath: webpackConfig.output.publicPath,
-  noInfo: true
-}));
+// app.use(webpackMiddleware(compiler, {
+//   hot: true,
+//   publicPath: webpackConfig.output.publicPath,
+//   noInfo: true
+// }));
 
-app.use(webpackHotMiddleware(compiler));
+// app.use(webpackHotMiddleware(compiler));
 
 
-app.use('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './index.html'));
+
+app.use('/bundle.js', (req, res) => {
+  console.log("eyyyyyyyyyyy")
+  res.sendFile(path.join(__dirname, '../bundle.js'));
 });
 
+app.use('/', (req, res) => {
+  console.log("jesus")
+  res.sendFile(path.join(__dirname, './index.html'));
+});
 
 io.on('connection', function(socket) {  
   console.log('user connected on: ' + socket.id);

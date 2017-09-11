@@ -17,10 +17,10 @@ class GoBidPage extends React.Component {
 
   componentDidUpdate(prevProps, prevState){
     if(prevState.Project !== this.state.Project){
- 
       
-     
-      
+    }
+    if(prevState.bidVisible !== this.state.bidVisible){
+
     }
 
 
@@ -42,9 +42,7 @@ class GoBidPage extends React.Component {
     return (
       <div className="row">
         <div className="col-md-6 col-md-offset-3">
-        { this.state.bidVisible ? <GoBid bidVisible={this.state.bidVisible}  setProject={this.setProject} /> : <ProjectDetail goBack={this.goBack} Project={this.state.Project}/> }
 
-        
         </div>
       </div>
     );

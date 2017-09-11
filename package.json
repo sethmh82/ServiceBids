@@ -4,12 +4,11 @@
   "description": "",
   "main": "server/index.js",
   "scripts": {
-    "start": "nodemon --watch server --watch client --exec babel-node -- server/index.js",
-    "r": "nodemon --exec babel-node -- server/index.js",
+    "start": "nodemon --watch server --exec babel-node -- server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Ken, Mehdi, Nick, Seth, Zach",
+  "author": "",
   "license": "ISC",
   "devDependencies": {},
   "dependencies": {
