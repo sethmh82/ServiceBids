@@ -1,13 +1,14 @@
 import React from 'react';
 import GoBid from './GoBid';
+import ProjectDetail from './ProjectDetail'
 
 class GoBidPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       bidVisible: true,
-      Project:null,
-      pDetailVisible:false
+      Project:null
+    
     }
 
     this.setProject = this.setProject.bind(this);
@@ -16,13 +17,9 @@ class GoBidPage extends React.Component {
 
   componentDidUpdate(prevProps, prevState){
     if(prevState.Project !== this.state.Project){
-      let data = {};
-      data.name = this.state.Project.projectName;
-      data.id = this.state.Project.id;
-      data.category = this.state.Project.category;
-      data.description = this.state.Project.description;
-      data.userId =this.state.Project.userId;
-      console.log(data);
+ 
+      
+     
       
     }
 
@@ -34,13 +31,20 @@ class GoBidPage extends React.Component {
     this.setState({bidVisible: false});
     
     
+    
+  }
+
+  goBack(){
+    this.setState({bidVisible: true});
   }
 
   render() {
     return (
       <div className="row">
         <div className="col-md-6 col-md-offset-3">
-        { this.state.bidVisible ? <GoBid bidVisible={this.state.bidVisible}  setProject={this.setProject} /> : null }
+        { this.state.bidVisible ? <GoBid bidVisible={this.state.bidVisible}  setProject={this.setProject} /> : <ProjectDetail goBack={this.goBack} Project={this.state.Project}/> }
+
+        
         </div>
       </div>
     );
